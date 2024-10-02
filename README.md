@@ -1,6 +1,6 @@
 # Penetration Testing Capstone
 
-**Course link:** **[Ethical Hacker - CISCO]([https://cs50.harvard.edu/x/2023/](https://www.netacad.com/courses/ethical-hacker?courseLang=en-US))**<br/>
+**Course link:** **[Ethical Hacker - CISCO]([https://www.netacad.com/courses/ethical-hacker?courseLang=en-US])**<br/>
 
 
 ## Background / Scenario
