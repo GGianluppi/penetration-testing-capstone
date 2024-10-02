@@ -1,6 +1,6 @@
 # Penetration Testing Capstone
 
-**Course link:** **[Ethical Hacker - CISCO]([https://www.netacad.com/courses/ethical-hacker?courseLang=en-US])**<br/>
+**Course link:** **[Ethical Hacker - CISCO](https://www.netacad.com/courses/ethical-hacker?courseLang=en-US)**<br/>
 
 
 ## Background / Scenario
@@ -140,7 +140,7 @@ Note: The admin account, it probably has the greatest rights and privileges on t
 
 **Step 3: Crack Gordon Brown's account password.**
 
-I will now use a password hash cracking tool of my choice to recover Gordon Brown’s password. I will implement two approaches: first, by accessing the website ```https://crackstation.net```, and second, by using John the Ripper for the password cracking process.
+I will now use a password hash cracking tool of my choice to recover Gordon Brown’s password. I will implement two approaches: first, by accessing the website **https://crackstation.net**, and second, by using John the Ripper for the password cracking process.
 
 The information retrieved from the database:
 
@@ -149,7 +149,7 @@ The information retrieved from the database:
   • Surname: e99a18c428cb38d5f260853678922e03
       
 **Part 1.** Free Password Hash Cracker
-Access the website https://crackstation.net and copy and paste the hash for the gordonb account “e99a18c428cb38d5f260853678922e03”.
+Access the website **https://crackstation.net** and copy and paste the hash for the gordonb account “e99a18c428cb38d5f260853678922e03”.
 
 
 <p align="center">
