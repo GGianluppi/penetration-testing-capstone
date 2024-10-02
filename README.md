@@ -21,13 +21,13 @@ In this final capstone, we will use DVWA (Damn Vulnerable Web Application) as ou
 
 In this part, you must discover user account information on a server and crack the password of Gordon Brown's account. You will then locate the file that contains the Challenge 1 code and use Gordon Brown's account credentials to open the file at 172.17.0.2 to view its contents.
 
-**Step 1: Preliminary setup**
+### Step 1: Preliminary setup
            
    1. Go to the website at **10.6.6.100**.
    2. Login with the credentials **admin / password**.
    3. Set the **DVWA** security level to **low** and click Submit.
 
-**Step 2: Retrieve the user credentials for the Gordon Brown's account.**
+### Step 2: Retrieve the user credentials for the Gordon Brown's account.
 
    **Part 1.** Check DVWA to see if a SQL Injection Vulnerability is Present.
 
@@ -138,7 +138,7 @@ The SQL injection payload ```1’ OR 1=1 UNION SELECT user, password FROM users 
 Note: The admin account, it probably has the greatest rights and privileges on the system; however, in this capstone project, I will focus on examining the gordonb account.
 
 
-**Step 3: Crack Gordon Brown's account password.**
+### Step 3: Crack Gordon Brown's account password.
 
 I will now use a password hash cracking tool of my choice to recover Gordon Brown’s password. I will implement two approaches: first, by accessing the website **https://crackstation.net**, and second, by using John the Ripper for the password cracking process.
 
@@ -187,7 +187,7 @@ With the password successfully cracked, I will now proceed to log in.
 </p>
 
 
-**Step 4: Locate and open the file with Challenge 1 code.**
+### Step 4: Locate and open the file with Challenge 1 code.
 Open your terminal and run the following command, replacing PASSWORD with the actual password you cracked for Gordon Brown (abc123). Use an SSH client  to log into the server.
     • ```ssh gordonb@172.17.0.2```
 
@@ -202,15 +202,15 @@ Once logged in, you will typically be in the home directory of the user. To find
 </p>
 
 
-**Step 5: Research and propose SQL attack remediation.**
+### Step 5: Research and propose SQL attack remediation.
 
-What are five remediation methods for preventing SQL injection exploits?
+#### What are five remediation methods for preventing SQL injection exploits?
 
-1. Parameterized Queries: Use parameterized queries or prepared statements to separate SQL code from data. This means that user input is treated as data and not executable code. 
-2. Stored Procedures: Utilize stored procedures to encapsulate SQL code within the database. By doing so, you limit the exposure of raw SQL statements to user inputs.
-3. Input Validation and Sanitization: Validate and sanitize all user inputs. Ensure that input data conforms to expected formats, types, and lengths.
-4. Use of Web Application Firewalls (WAFs): Configure the WAF to filter out known attack patterns and anomalies.
-5. Least Privilege Principle: Limit database user permissions to the minimum necessary for the application to function. Avoid using database accounts with administrative privileges for web applications.
+**1. Parameterized Queries:** Use parameterized queries or prepared statements to separate SQL code from data. This means that user input is treated as data and not executable code.</br>
+**2. Stored Procedures:** Utilize stored procedures to encapsulate SQL code within the database. By doing so, you limit the exposure of raw SQL statements to user inputs.</br>
+**3. Input Validation and Sanitization:** Validate and sanitize all user inputs. Ensure that input data conforms to expected formats, types, and lengths.</br>
+**4. Use of Web Application Firewalls (WAFs):** Configure the WAF to filter out known attack patterns and anomalies.</br>
+**5. Least Privilege Principle:** Limit database user permissions to the minimum necessary for the application to function. Avoid using database accounts with administrative privileges for web applications.
 
 
 ## Challenge 2: Web Server Vulnerabilities
@@ -219,13 +219,13 @@ In this part, you must find vulnerabilities on an HTTP server. Misconfiguration 
 
 In this challenge, you will locate the flag file in a vulnerable directory on a web server.
 
-**Step 1: Preliminary setup**
+### Step 1: Preliminary setup
 
   1.  log into the server at 10.6.6.100 with the admin / password credentials.
   2. Set the application security level to low.
 
 
-Step 2: From the results of your reconnaissance, determine which directories are viewable using a web browser and URL manipulation.
+### Step 2: From the results of your reconnaissance, determine which directories are viewable using a web browser and URL manipulation.
 I will adopt two techniques for reconnaissance: Gobuster and Nikto.
 
 **Part 1.** Gobuster 
@@ -256,7 +256,7 @@ Finding directories such as /docs and /config during a reconnaissance scan with 
 /docs → This directory often contains documentation related to the web application or server. It may include API documentation, installation guides, user manuals, or other relevant materials.
 /config → This directory typically contains configuration files for the application or server. It may include database connection settings, API keys, or environment configuration.
 
-**Step 3: View the files contained in each directory to find the file containing the flag.**
+### Step 3: View the files contained in each directory to find the file containing the flag.
 Access the /docs directory in a web browser to explore its contents
 
   • ```http://10.6.6.100/docs```
@@ -274,12 +274,12 @@ We were able to locate the user_form.html.
 </p>
 
 
-**Step 4: Research and propose directory listing exploit remediation.**
+### Step 4: Research and propose directory listing exploit remediation.
 
-What are two remediation methods for preventing directory listing exploits?
+#### What are two remediation methods for preventing directory listing exploits?
 
-1. Disable Directory Listings: Configure the web server to prevent directory listings. This can typically be done by modifying the server configuration files (e.g., .htaccess for Apache or nginx.conf for Nginx).
-2. Implement Proper Access Controls: Ensure that sensitive directories are protected with appropriate access controls, such as authentication and authorization mechanisms.
+**1. Disable Directory Listings:** Configure the web server to prevent directory listings. This can typically be done by modifying the server configuration files (e.g., .htaccess for Apache or nginx.conf for Nginx).</br>
+**2. Implement Proper Access Controls:** Ensure that sensitive directories are protected with appropriate access controls, such as authentication and authorization mechanisms.
 
 
 
@@ -289,7 +289,7 @@ What are two remediation methods for preventing directory listing exploits?
 
 In this section, the objective is to determine whether there are any unsecured shared directories present on an SMB server within the 10.6.6.0/24 network.
 
-**Step 1: Scan for potential targets running SMB.**
+### Step 1: Scan for potential targets running SMB.
 
 By running  ```nmap -sV 10.6.6.0/24``` , you perform a comprehensive scan of the subnet, discovering active hosts, open ports, and the services running on those ports along with their versions. 
 
@@ -311,7 +311,7 @@ The presence of open ports 139 and 445 suggests that the target system is capabl
     
 	 - It supports shared access to files, printers, and serial ports.
 
-**Step 2: Determine which SMB directories are shared and can be accessed by anonymous users.**
+### Step 2: Determine which SMB directories are shared and can be accessed by anonymous users.
 
 To scan a device running SMB and locate shares that can be accessed by anonymous users, you can use either smbclient or enum4linux. Below are step-by-step instructions for both tools:
 
@@ -335,7 +335,7 @@ The output will include information about the shares available on the target, in
 <img src="https://github.com/user-attachments/assets/e13b7454-8ef2-453a-af6a-884a0afc6610">
 </p>
 
-Part 2. smbclient
+**Part 2.** smbclient
 
 ```smbclient``` is a command-line tool that allows you to access SMB/CIFS resources on servers.
 Use the following command to list available shares on the target device:
@@ -356,7 +356,7 @@ When you run the command, you can expect output similar to the following:
 </p>
 
 
-**Step 3: Investigate each shared directory to find the file.**
+### Step 3: Investigate each shared directory to find the file.
 
 To investigate each shared directory on an SMB server and find specific files, you can use the smbclient utility.
 
@@ -398,13 +398,12 @@ After navigating to the 'OTHER' directory, you can use the get command to downlo
 <img src="https://github.com/user-attachments/assets/179e296d-64fe-4e87-ad93-8ea86e7df10a">
 </p>
 
+### Step 4: Research and propose SMB attack remediation.
 
-**Step 4: Research and propose SMB attack remediation.**
+#### What are two remediation methods for preventing SMB servers from being accessed?
 
-What are two remediation methods for preventing SMB servers from being accessed?
-
-1. Implement Strong Authentication and Access Controls: Enforce strong password policies and use multi-factor authentication (MFA) for all users accessing the SMB server.
-2. Restrict SMB Access via Firewall Rules: Use firewall rules to restrict access to the SMB ports (typically TCP 445 and TCP 139) from untrusted networks or unauthorized IP addresses.
+**1. Implement Strong Authentication and Access Controls:** Enforce strong password policies and use multi-factor authentication (MFA) for all users accessing the SMB server.</br>
+**2. Restrict SMB Access via Firewall Rules:** Use firewall rules to restrict access to the SMB ports (typically TCP 445 and TCP 139) from untrusted networks or unauthorized IP addresses.
 
 
 
@@ -414,7 +413,7 @@ What are two remediation methods for preventing SMB servers from being accessed?
 
 The capture file, SA.pcap, is located in the OTHER subdirectory within the kali user home directory.
 
-**Step 1: Find and analyze the SA.pcap file.**
+### Step 1: Find and analyze the SA.pcap file.
 
 Analyze the content of the PCAP file to determine the IP address of the target computer and the URL location of the file with the Challenge 4 code.
 
@@ -432,7 +431,7 @@ Examine URLs in the "Info" column or follow TCP streams to see paths revealed in
 
 
 
-**Step 2: Use a web browser to display the contents of the directories on the target computer.**
+### Step 2: Use a web browser to display the contents of the directories on the target computer.
 
 Use a web browser to navigate to the following URL: ```http://mutillidae.vm/data/```.
 
@@ -448,12 +447,12 @@ We were able to see the accounts.xml file.
 </p>
 
 
-**Step 3: Research and propose remediation that would prevent file content from being transmitted in clear text.**
+### Step 3: Research and propose remediation that would prevent file content from being transmitted in clear text.
 
-What are two remediation methods that can prevent unauthorized persons from viewing the content of the files?
+#### What are two remediation methods that can prevent unauthorized persons from viewing the content of the files?
 
-1. Implement Access Control Lists (ACLs): Define user permissions for files and directories to ensure only authorized users can access sensitive information.
-2. Encrypt Sensitive Files and Data: Use encryption to convert data into a coded format that can only be read by users with the decryption key.
+**1. Implement Access Control Lists (ACLs):** Define user permissions for files and directories to ensure only authorized users can access sensitive information.</br>
+**2. Encrypt Sensitive Files and Data:** Use encryption to convert data into a coded format that can only be read by users with the decryption key.
 
 
 
