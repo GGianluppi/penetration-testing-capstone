@@ -1,6 +1,6 @@
-# CS50 Introduction to Computer Science
+# Penetration Testing Capstone
 
-**Course link:** **[Ethical Hacker - CISCO](https://cs50.harvard.edu/x/2023/)**<br/>
+**Course link:** **[Ethical Hacker - CISCO]([https://cs50.harvard.edu/x/2023/](https://www.netacad.com/courses/ethical-hacker?courseLang=en-US))**<br/>
 
 
 ## Background / Scenario
@@ -8,8 +8,8 @@ You have been hired to conduct a penetration test for a customer. At the conclus
 Objectives
 For this Final Capstone Activity, you will conduct a complete penetration test starting with reconnaissance and then launching exploits against vulnerabilities that you have discovered. Finally, you will propose remediation for the exploits.	
 
-  - **Challenge 1** – Use SQL injection to find a flag file.
-  - **Challenge 2** – Use web server vulnerabilities to investigate directories and find a flag file.
+  * **Challenge 1** – Use SQL injection to find a flag file.
+  * **Challenge 2** – Use web server vulnerabilities to investigate directories and find a flag file.
   * **Challenge 3** – Exploit open Samba shares to access a flag file.
   * **Challenge 4** – Analyze a Wireshark capture file to find the location of a file containing flag information.
 
@@ -41,7 +41,7 @@ Initially, let us employ the following SQL injection payload: ‘OR 1=1 #.
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/c9d97a43-5f61-4d65-9fc6-387b4b20802b">
 </p>
 
 
@@ -56,8 +56,9 @@ The payload ```1’ ORDER BY 1 #``` is a tool used by attackers to probe the dat
   • ``` ORDER BY ``` : Clause is used to sort the result set of a query by one or more columns.
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/cb3596f3-d8ed-4be8-9a89-922f2739599f">
 </p>
+
 
 By using ```1' ORDER BY 3 #```, you should receive the error message 'Unknown column '3' in 'order clause'.
 
@@ -71,7 +72,7 @@ I will now utilize the SQL injection payload ```1' OR 1=1 UNION SELECT 1, VERSIO
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/d0888365-077a-44ac-a46a-46abefecb75f">
 </p>
 
 The output 5.5.58-0+deb8u1 indicates the DBMS is MySQL version 5.5.58 running on Debian.
@@ -82,7 +83,7 @@ So far you have learned that the database is vulnerable, the query involves two 
 Next, I will attempt to gather additional schema information about the database by using the SQL injection payload ```1’ OR 1=1 UNION SELECT 1, DATABASE () #``` .
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/1a03383f-0e1a-4320-be41-2393a2d8bf20">
 </p>
 
 This means the name of the database is dvwa.
@@ -96,7 +97,7 @@ The payload  ```1' OR 1=1 UNION SELECT 1,table_name FROM information_schema.tabl
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/48e43d44-854d-4abe-b0c3-06a1c23d5a2a">
 </p>
 
 
@@ -112,7 +113,7 @@ The SQL injection payload ```1' OR 1=1 UNION SELECT 1, column_name FROM informat
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/66f248ac-9e98-4e34-a968-942c8e49beec">
 </p>
 
 
@@ -130,7 +131,7 @@ The SQL injection payload ```1’ OR 1=1 UNION SELECT user, password FROM users 
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/b6c34e9e-f8be-437a-a939-f56d01509b6c">
 </p>
 
 
@@ -152,7 +153,7 @@ Access the website https://crackstation.net and copy and paste the hash for the 
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/91e855c6-6145-431e-a045-72a2d288034b">
 </p>
 
 The outcome is:
@@ -170,19 +171,19 @@ The command  ```echo e99a18c428cb38d5f260853678922e03 > passwd.txt```  is a simp
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/6763b4f5-61a8-42d2-ae6e-5519cf11a5e2">
 </p>
 
 The command  ```john --format=raw-md5 passwd.txt```  tells John the Ripper to crack the MD5 hashes stored in the file passwd.txt.
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/dbd7f017-0049-467c-ba92-feecb310a893">
 </p>
 
 With the password successfully cracked, I will now proceed to log in.
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/2741f958-5b7a-4b3f-963a-2103773bc382">
 </p>
 
 
@@ -191,13 +192,13 @@ Open your terminal and run the following command, replacing PASSWORD with the ac
     • ```ssh gordonb@172.17.0.2```
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/13e28ed5-7769-41a2-897a-5878729c465e">
 </p>
 
 Once logged in, you will typically be in the home directory of the user. To find the flag file, list all files in the home directory using:  ```ls``` .
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/6ebb9909-d629-48bc-9174-6f69cde73d76">
 </p>
 
 
@@ -239,7 +240,7 @@ I will initiate the process by using Gobuster with the following command: ```gob
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/52c2c443-0013-488d-a855-a5882350dcdc">
 </p>
 
 **Part 2.** Nikto
@@ -248,7 +249,7 @@ The command ``` nikto -h 10.6.6.100 ``` is used to scan a web server for vulnera
       In this case, 10.6.6.100 is the IP address of the web server you want to analyze.
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/db8ac8bf-1529-4bce-83f9-af722027daaa">
 </p>
 
 Finding directories such as /docs and /config during a reconnaissance scan with tools like Gobuster or Nikto can provide valuable insights into the structure of a web application and potential vulnerabilities.
@@ -262,14 +263,14 @@ Access the /docs directory in a web browser to explore its contents
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/40514204-abc5-4797-9dc8-0e2ef542ca1d">
 </p>
 
 
 We were able to locate the user_form.html.
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/21bac419-54ad-428d-a58e-056e2443e555">
 </p>
 
 
@@ -295,22 +296,20 @@ By running  ```nmap -sV 10.6.6.0/24``` , you perform a comprehensive scan of the
   • ```-sV ```: This option enables service version detection. 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/b3d44e6c-23d5-430b-8a2d-cac765a7c6f8">
 </p>
 
 The presence of open ports 139 and 445 suggests that the target system is capable of file sharing, potentially exposing it to various vulnerabilities. 
                   
-**Port 139:** NetBIOS Session Service
-
-   • Used for file and printer sharing over a network.
+* **Port 139:** NetBIOS Session Service
+  	 - Used for file and printer sharing over a network.
    
-   • It allows applications on different computers to communicate with each other in a local area network (LAN).
+  	 - It allows applications on different computers to communicate with each other in a local area network (LAN).
 
-**Port 445:** SMB (Server Message Block) over TCP
-
-  • This port is primarily used for Windows file and printer sharing.
+* **Port 445:** SMB (Server Message Block) over TCP
+  	 - This port is primarily used for Windows file and printer sharing.
     
-  • It supports shared access to files, printers, and serial ports.
+	 - It supports shared access to files, printers, and serial ports.
 
 **Step 2: Determine which SMB directories are shared and can be accessed by anonymous users.**
 
@@ -333,7 +332,7 @@ The output will include information about the shares available on the target, in
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/e13b7454-8ef2-453a-af6a-884a0afc6610">
 </p>
 
 Part 2. smbclient
@@ -353,7 +352,7 @@ When you run the command, you can expect output similar to the following:
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/c11ea259-f3f9-414a-ba3e-51cc6a45f1e1">
 </p>
 
 
@@ -367,39 +366,36 @@ Use the following command to connect to a specific share:
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/2971bce3-862a-4dd2-8f13-b38c8ac932ca">
 </p>
 
 Here, you can use various commands to navigate and list files:
 
-  • ls or dir: Lists the files and directories in the current directory.
-  
-  • cd <directory_name>: Changes to a specified subdirectory.
-  
-  • pwd: Displays the current directory path.
-  
-  • get <file_name>: Downloads a file from the share to your local machine.
+  * ```ls``` or ```dir```: Lists the files and directories in the current directory.
+  *``` cd <directory_name>```: Changes to a specified subdirectory.
+  * ```pwd```: Displays the current directory path.
+  * ```get <file_name>```: Downloads a file from the share to your local machine.
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/962f35d7-8e1c-46e6-b89c-b833289c1840">
 </p>
 
 Access the 'OTHER' directory.
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/630aff52-a16e-4864-84c2-b34f44c7b0cf">
 </p>
 
 
 After navigating to the 'OTHER' directory, you can use the get command to download taxes.txt from the share to your local machine.
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/18d566bc-37b8-4a6a-b7da-5cca3c69d1c2">
 </p>
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/179e296d-64fe-4e87-ad93-8ea86e7df10a">
 </p>
 
 
@@ -425,13 +421,13 @@ Analyze the content of the PCAP file to determine the IP address of the target c
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/0321d8e5-3e03-4190-b927-a73e50f8ba31">
 </p>
 
 Examine URLs in the "Info" column or follow TCP streams to see paths revealed in the captured traffic.
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/4c39e8ac-2498-49fb-ab27-6238aa8b2aa0">
 </p>
 
 
@@ -441,14 +437,14 @@ Examine URLs in the "Info" column or follow TCP streams to see paths revealed in
 Use a web browser to navigate to the following URL: ```http://mutillidae.vm/data/```.
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/00baf366-6e92-4e37-9a92-3b2c1270d58e">
 </p>
 
 We were able to see the accounts.xml file.
 
 
 <p align="center">
-<img src="" width="650" height="250">
+<img src="https://github.com/user-attachments/assets/f02913f4-6aea-456f-86ec-eb9111abb1c7">
 </p>
 
 
