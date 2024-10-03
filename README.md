@@ -253,8 +253,9 @@ The command ``` nikto -h 10.6.6.100 ``` is used to scan a web server for vulnera
 </p>
 
 Finding directories such as /docs and /config during a reconnaissance scan with tools like Gobuster or Nikto can provide valuable insights into the structure of a web application and potential vulnerabilities.
-/docs → This directory often contains documentation related to the web application or server. It may include API documentation, installation guides, user manuals, or other relevant materials.
-/config → This directory typically contains configuration files for the application or server. It may include database connection settings, API keys, or environment configuration.
+
+**/docs →** This directory often contains documentation related to the web application or server. It may include API documentation, installation guides, user manuals, or other relevant materials.</br>
+**/config →** This directory typically contains configuration files for the application or server. It may include database connection settings, API keys, or environment configuration.
 
 ### Step 3: View the files contained in each directory to find the file containing the flag.
 Access the /docs directory in a web browser to explore its contents
